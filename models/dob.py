@@ -27,7 +27,7 @@ class Dob(db.Model):
 
     @classmethod
     def get_by_year(cls, year, page, per_page):
-        return cls.query.filter_by(year=year).order_by(desc(cls.created_at)).paginate(page=page, per_page=per_page)
+        return cls.query.filter_by(year=year).order_by(desc(cls.BBL)).paginate(page=page, per_page=per_page)
 
     @classmethod
     def get_by_BBL(cls, BBL):

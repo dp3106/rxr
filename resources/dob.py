@@ -16,12 +16,11 @@ dob_pagination_schema = DobPaginationSchema()
 
 
 class Index(Resource):
-    def get(self):
-        socks = Dob.get_by_year(2021)
-        sock_text = ''
-        for sock in socks:
-            sock_text += sock.Job_Type +', '
-        return sock_text
+        @use_kwargs({'page': fields.Int(missing=1),
+                     'per_page': fields.Int(missing=20)})
+        def get(self,  page, per_page):
+            paginated_dob = Dob.get_by_year(2020, 1, 20)
+            return dob_pagination_schema.dump(paginated_dob).data, HTTPStatus.OK
 
 class Random(Resource):
     def get(self):
