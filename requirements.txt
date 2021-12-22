@@ -1,0 +1,8 @@
+Flask
+httpie
+Flask-Restful
+Flask-SQLAlchemy
+Flask-Migrate
+mysqlclient
+marshmallow
+webargs
