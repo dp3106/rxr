@@ -19,8 +19,8 @@ class Index(Resource):
         @use_kwargs({'page': fields.Int(missing=1),
                      'per_page': fields.Int(missing=20)})
         def get(self,  page, per_page):
-            paginated_dob = Dob.get_by_year(2020, 1, 20)
-            return dob_pagination_schema.dump(paginated_dob).data, HTTPStatus.OK
+            paginated_dob = Dob.get_all(page,per_page)
+            return dob_pagination_schema.dump(paginated_dob), HTTPStatus.OK
 
 class Random(Resource):
     def get(self):

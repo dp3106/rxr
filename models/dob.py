@@ -33,6 +33,10 @@ class Dob(db.Model):
     def get_by_BBL(cls, BBL):
         return cls.query.filter_by(BBL=BBL).first()
 
+    @classmethod
+    def get_all(cls, page, per_page):
+        return cls.query.filter_by(year=2020).order_by(desc(cls.BBL)).paginate(page=page, per_page=per_page)
+
     def data(self):
         return {
             'id': self.id,

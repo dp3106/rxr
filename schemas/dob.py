@@ -28,5 +28,4 @@ class DobSchema(Schema):
         BBL = fields.Float()
 
 class DobPaginationSchema(PaginationSchema):
-    data = fields.Nested(DobSchema,attribute = 'dob', many = True)
-    # find get all published
+    data = fields.Nested(DobSchema, many = True)
